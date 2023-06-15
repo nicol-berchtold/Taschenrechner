@@ -27,8 +27,7 @@ function listenToKeys() {
     let num = key.dataset.value;
 
     if (!action) {
-      console.log("eine Ziffer wurde geklickt");
-      console.log(inputNum(num));
+      inputNum(num);
       displayUpdate();
     }
 
@@ -39,18 +38,15 @@ function listenToKeys() {
       action === "=" ||
       action === "*"
     ) {
-      console.log("ein Rechenoperator wurde geklickt");
       waitingOperator(action);
       displayUpdate();
     }
 
     if (action == ".") {
-      console.log("der Dezimalpunkt wurde geklickt");
       komma();
       displayUpdate();
     }
     if (action == "clear") {
-      console.log("Die Taste AC wurde geklickt");
       reset();
       displayUpdate();
     }
@@ -80,11 +76,9 @@ function waitingOperator(x) {
     firstNumber = parseFloat(displayNumber);
   } else if (operator) {
     const ergebnis = calculate(+firstNumber, +displayNumber, operator);
-    console.log(firstNumber, displayNumber);
     firstNumber = ergebnis;
     displayNumber = parseFloat(ergebnis);
   }
-
   waitingNumber = true;
   operator = x;
 }
